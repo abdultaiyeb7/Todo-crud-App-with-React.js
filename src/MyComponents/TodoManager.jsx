@@ -38,7 +38,7 @@ const TodoManager = () => {
 
         // Fetch the updated todo list after successfully adding a new todo
         axios
-          .get("https://fastapi-todo-crud-mongodb.onrender.com/api/todos")
+          .get("https://fastapi-todo-crud-mongodb.onrender.com/api/todo")
           .then((res) => {
             setTodoList(res.data);
           })
