@@ -22,7 +22,12 @@ const TodoManager = () => {
 
   // Post a todo
 
-  const addTodoHandler = () => {
+  const addTodoHandler = (e) => {
+     e.preventDefault();
+      if (!title || !desc) {
+          alert("Title or Description cannot be blank");
+      }
+      else {
     axios
       .post("https://fastapi-todo-crud-mongodb.onrender.com/api/todo", {
         title: title,
@@ -44,6 +49,7 @@ const TodoManager = () => {
       .catch((error) => {
         console.error("Error adding new todo:", error);
       });
+      }
   };
 
   // Delete a todo
