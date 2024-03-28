@@ -24,7 +24,7 @@ const TodoManager = () => {
 
   const addTodoHandler = () => {
     axios
-      .post("https://fastapi-todo-crud-mongodb.onrender.com/api/todo", {
+      .post("https://fastapi-todo-crud-mongodb.onrender.com/api/todos", {
         title: title,
         description: desc,
       })
