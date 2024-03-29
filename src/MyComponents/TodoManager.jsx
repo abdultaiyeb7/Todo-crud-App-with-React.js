@@ -22,12 +22,7 @@ const TodoManager = () => {
 
   // Post a todo
 
-  const addTodoHandler = (e) => {
-     e.preventDefault();
-      if (!title || !desc) {
-          alert("Title or Description cannot be blank");
-      }
-      else {
+  const addTodoHandler = () => {
     axios
       .post("https://fastapi-todo-crud-mongodb.onrender.com/api/todo", {
         title: title,
@@ -38,7 +33,7 @@ const TodoManager = () => {
 
         // Fetch the updated todo list after successfully adding a new todo
         axios
-          .get("https://fastapi-todo-crud-mongodb.onrender.com/api/todo")
+          .get("https://fastapi-todo-crud-mongodb.onrender.com/api/todos")
           .then((res) => {
             setTodoList(res.data);
           })
@@ -49,7 +44,6 @@ const TodoManager = () => {
       .catch((error) => {
         console.error("Error adding new todo:", error);
       });
-      }
   };
 
   // Delete a todo
@@ -60,6 +54,7 @@ const TodoManager = () => {
         `https://fastapi-todo-crud-mongodb.onrender.com/api/todo/delete/${title}`
       )
       .then((res) => {
+        console.log(res);
         // Fetch the updated todo list after successfully adding a new todo
         axios
           .get("https://fastapi-todo-crud-mongodb.onrender.com/api/todos")
@@ -113,6 +108,7 @@ const TodoManager = () => {
             <TodoListView
               todoList={todoList}
               deleteTodoHandler={deleteTodoHandler}
+              // setTodoList={setTodoList}
             />
           </div>
         </div>
